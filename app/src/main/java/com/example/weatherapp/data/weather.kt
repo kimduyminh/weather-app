@@ -8,5 +8,5 @@ import androidx.room.ColumnInfo
 data class weather(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(name = "datetime") var datetime: String?,
-    @ColumnInfo(name = "temperature_2m") var temperature: Any?
+    @ColumnInfo(name = "temperature_2m") var temperature: Double?
 )

@@ -1,10 +1,11 @@
 package com.example.weatherapp.viewmodel
 
+import androidx.lifecycle.ViewModel
 import com.example.weatherapp.data.weatherAPI
 import com.example.weatherapp.data.weather
 import com.example.weatherapp.data.weatherDao
 
-class mainViewModel {
+class mainViewModel : ViewModel(){
     private var weatherArray : MutableList<weather> = TODO()
     private var weatherAPIData = weatherAPI
     private val weatherDao : weatherDao
@@ -18,7 +19,7 @@ class mainViewModel {
                 weatherArray[i].datetime = response.body()?.hourly?.time!![i]
             }
             for (j in 0..response.body()?.hourly?.temperature2m!!.size - 1) {
-                weatherArray[j].temperature = response.body()?.hourly?.temperature2m!![j]
+                weatherArray[j].temperature = response.body()?.hourly?.temperature2m!![j] as Double?
             }
             syncToDatabase()
         }
